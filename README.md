@@ -1,11 +1,11 @@
-About r-jsonvalidate
-====================
+About r-jsonvalidate-feedstock
+==============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-jsonvalidate-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/ropensci/jsonvalidate
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-jsonvalidate-feedstock/blob/main/LICENSE.txt)
 
 Summary: Uses the node library 'is-my-json-valid' or 'ajv' to validate 'JSON' against a 'JSON' schema.  Drafts 04, 06 and 07 of 'JSON' schema are supported.
 
