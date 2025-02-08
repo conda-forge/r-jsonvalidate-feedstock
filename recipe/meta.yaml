@@ -1,4 +1,4 @@
-{% set version = "1.3.2" %}
+{% set version = "1.5.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/jsonvalidate_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/jsonvalidate/jsonvalidate_{{ version }}.tar.gz
-  sha256: 2b6c08bfa9ba043151a41d914b24b776583a140ee93a448191d5d0af46aadb57
+  sha256: 3429eb6f049905f9ce7869b9c30c57135ba64b28a12f7d24593428e9d7651f04
 
 build:
-  number: 3
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -21,11 +21,14 @@ build:
 requirements:
   build:
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
+    - r-r6
     - r-v8
   run:
     - r-base
+    - r-r6
     - r-v8
 
 test:
@@ -38,7 +41,9 @@ about:
   license: MIT
   summary: Uses the node library 'is-my-json-valid' or 'ajv' to validate 'JSON' against a 'JSON' schema.  Drafts 04, 06 and 07 of 'JSON' schema are supported.
   license_family: MIT
-  license_file: LICENSE
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - LICENSE
 
 extra:
   recipe-maintainers:
