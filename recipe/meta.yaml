@@ -21,11 +21,14 @@ build:
 requirements:
   build:
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
+    - r-r6
     - r-v8
   run:
     - r-base
+    - r-r6
     - r-v8
 
 test:
@@ -38,7 +41,9 @@ about:
   license: MIT
   summary: Uses the node library 'is-my-json-valid' or 'ajv' to validate 'JSON' against a 'JSON' schema.  Drafts 04, 06 and 07 of 'JSON' schema are supported.
   license_family: MIT
-  license_file: LICENSE
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - LICENSE
 
 extra:
   recipe-maintainers:
